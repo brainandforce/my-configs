@@ -1,0 +1,4 @@
+set number
+highlight LineNr ctermfg=DarkCyan
+syntax on
+set tabstop=4

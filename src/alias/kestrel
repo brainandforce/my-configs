@@ -1,0 +1,42 @@
+# Kestrel specific commands, mostly adapted from phoenix
+alias clear='clear; neofetch --ascii ~/.ascii; echo "Currently running jobs:"; myjobs' 
+alias qabf='qabinit -q fredrickson'
+alias pa='prepareAbinit4'
+alias updates='tail -f *.log'
+alias AddCore='~danny/DFTMad/AddCore'
+alias autobader='bader -p all_atom CHGCAR -ref CHGCAR_sum'
+alias BaderCV4e='~danny/DFTMad/CPpackage2_BaderCV4e'
+alias BaderCV4f='~danny/DFTMad/CPpackage2_BaderCV4f_html'
+alias bader='~danny/DFTMad/bader'
+alias matlab='/usr/local/MATLAB/R2012a/bin/matlab &'
+alias vesta='/home/danny/VESTA-i686/VESTA &'
+alias rwigs='/home/danny/fortran/rwigs'
+alias ehtuner='/home/danny/fortran/eHtuner_new7'
+alias listjobs='qstat -u $USER'
+alias myjobs='qstat | grep $USER'
+alias groupjobs='qstat | grep " fredrickson"'
+alias nodes='pbsnodes :dfnodes #compute 0-37 thru 0-41 + 35-2 thru 37-2'
+alias mpi='. /usr/mpi/openmpi_intel/2.0.1/bin/mpivars.sh'
+alias show='xdg-open'
+alias ETOT='grep ETOT *out'
+alias etotal='grep etotal *out'
+alias ngkpt='grep ngkpt *in'
+alias ngfft='grep ngfft *log'
+alias nkpt='grep nkpt *log'
+
+bignode() # Request a node with a decent amount of memory, $1 GB
+          # usage: 'bignode 20' gives you 20 GB of memory on a node
+{
+	qsub -I -l mem=$1gb -d .
+}
+
+unalias top    # not present on kestrel yet
+# If we're not on Kestrel, fix some aliases
+if [ $(cat /etc/hostname) != kestrel.chem.wisc.edu ]; then
+	unalias vi
+	alias vim='vi'
+        alias clear='clear; neofetch --ascii ~/.ascii'
+else
+	unalias sl	# seems to be something used with Gaussian...
+			# which we don't actually use
+fi

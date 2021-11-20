@@ -1,0 +1,71 @@
+# This file is intended for use with all Linux distros
+
+# Make ls colorful, and differentiate vdir with its own command
+alias ls='ls -p --color=auto'
+alias dir='dir -p --color=force'
+alias vdir='vdir -NAp --time-style=long-iso --color=auto'
+
+# Make grep output colorful
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# Make file operations more verbose, and prompt before overwriting
+alias rm='rm -v'                # -r is not included for user safety
+alias cp='cp -vi'
+alias ln='ln -vi'
+alias mv='mv -vi'
+alias mkdir='mkdir -vp'         # make parent directories if needed
+alias rmdir='rmdir -v'
+alias symlink='ln -svi'
+alias hl='cp -lvi'
+alias hardlink='cp -lvi'
+
+# Archive commands
+alias untar='tar -xvf'
+alias untgz='tar -xzvf'
+alias untbz2='tar -xjvf'
+
+# Make various system info commands more informative and more readable
+alias df='df -h'
+alias free='free -m'
+alias lsblk='lsblk -f'
+alias usage='du -hd 1 | sort -h'
+
+# Make various system administration commands more verbose
+alias modprobe='modprobe -v'
+alias mount='mount -v'
+alias umount='umount -v'
+
+# Use more effective utilities for the job
+alias more='less'               # open less instead of more
+alias top='htop'                # open htop instead of top
+alias vi='vim'                  # open vim instead of vi
+
+# Get the entropy estimate
+alias entropy='cat /proc/sys/kernel/random/entropy_avail'
+
+# Show neofetch when the screen is cleared (use Ctrl+L to clear screen normally)
+# Use ascii art if supplied, otherwise just regular neofetch
+if [[ -f ~/.ascii ]]; then
+	alias clear='clear; neofetch --ascii ~/.ascii'
+else
+	[[ -x $(command -v neofetch) ]] && alias clear='clear; neofetch'
+fi
+
+# Make aliases work with sudo
+alias sudo='sudo '
+
+# Tell the computer to fuck right off if the user forgets sudo
+alias fuckoff='sudo $(history -p !!)'
+
+# Functions: Short sequences of commands that cannot simply be aliased
+# Make directory and change into it (only accepts 1 argument)
+mkcd()
+{
+	mkdir -vp "$1" && cd "$1"
+}
+mkpushd()
+{
+	mkdir -vp "$1" && pushd "$1"
+}

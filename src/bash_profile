@@ -1,0 +1,15 @@
+#
+# ~/.bash_profile
+#
+
+# Execute the commands in .bashrc
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+
+# Print the neofetch output as an MOTD
+# Check for ~/.ascii if it exists and use that as the default ascii art
+# Otherwise just run neofetch normally if it exists
+if [[ -f ~/.ascii ]]; then
+	neofetch --ascii ~/.ascii
+else
+	[[ -x $(command -v neofetch) ]] && neofetch
+fi

@@ -1,0 +1,46 @@
+# Directory colors for ls, dir, and vdir.
+# If none are set by the user, the defaults are applied.
+if [ -f ~/.dircolors ]; then
+	eval $(dircolors -b ~/.dircolors)
+else
+	eval $(dircolors -b)
+fi
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
+
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+
+# Prompt definition.
+# This lets you change your prompt to a different format as defined
+# in ~/.bash_prompt, analogous to ~/.bash_aliases.
+
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
+fi
+
+# Auto-completion of certain commands.
+complete -c man which type
+complete -cf sudo
+
+# lol who uses cd
+shopt -s autocd
+
+# Check window size so text doesn't look weird in a terminal emulator
+shopt -s checkwinsize
+
+# Include dotfiles when globbing
+shopt -s dotglob
+
+# Default editor
+export EDITOR=vim
+# No more typing the AUR URL
+export AUR='https://aur.archlinux.org'
+# Add a local bin directory in $PATH
+export PATH="$PATH:~/bin"
+# Colorize the man pager
+export MANPAGER='less -R --use-color -Dd+G -Du+B'

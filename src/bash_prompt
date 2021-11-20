@@ -1,0 +1,9 @@
+# ~/.bash_prompt: quick prompt settings for bash
+if [[ ${EUID} == 0 ]] ; then
+	# Show scary red prompt if user is root
+	export PS1="\[\e[31m\][\[\e[m\]\[\e[95m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[94m\]\w\[\e[m\]\[\e[31m\]]\\$\[\e[m\] "
+else
+	# Show cyan prompt if user is not root
+	# I usually change this so the hostname is red if the computer isn't mine.
+	export PS1="\[\e[32m\][\[\e[m\]\[\e[96m\]\u\[\e[m\]@\[\e[36m\]\h\[\e[m\]:\[\e[94m\]\w\[\e[m\]\[\e[32m\]]\\$\[\e[m\] "
+fi

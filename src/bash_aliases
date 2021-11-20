@@ -1,0 +1,3 @@
+# Alias files to source
+. ~/.alias/common
+. ~/.alias/arch
