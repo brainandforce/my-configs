@@ -1,0 +1,8 @@
+\e{bold}Computer name:\e{reset}       \e{lightred}\n\e{reset}
+\e{bold}Operating system:\e{reset}    \e{lightgreen}\S\e{reset} \m on kernel \r
+\e{bold}Terminal:\e{reset}            \e{lightblue}\l\e{reset} at \b baud
+
+\U currently logged in.
+
+To switch to a different virtual terminal, press \e{lightcyan}Ctrl+Alt+Fn\e{reset} (F1 through F10).
+
