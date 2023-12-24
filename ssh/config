@@ -1,0 +1,4 @@
+VisualHostKey=yes
+# Uncomment if using WSL (https://github.com/microsoft/WSL/issues/8985)
+# Host *
+#     IPQoS=none
